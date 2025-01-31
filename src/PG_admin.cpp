@@ -1,7 +1,7 @@
 #include "PG_admin.h"
 
 // Функция для подключения к базе данных
-void PG_admin::Connect_db(string ip_adr, string db_name, string username, string passworld) {
+bool PG_admin::Connect_db(string ip_adr, string db_name, string username, string passworld) {
     // Формирование строки подключения к БД
     string conn_srt = "user=" + username + " password=" + passworld + " host=" + ip_adr + " dbname=" + db_name;
     conn = PQconnectdb(conn_srt.c_str()); // Попытка подключения
@@ -9,8 +9,10 @@ void PG_admin::Connect_db(string ip_adr, string db_name, string username, string
     if (PQstatus(conn) != CONNECTION_OK) {
         std::cerr << "Ошибка подключения к базе данных: " << PQerrorMessage(conn) << std::endl;
         PQfinish(conn);
-        return;
+        return 0;
     }
+    else 
+        return 1;
 }
 
 // Функция для выполнения SQL-запроса

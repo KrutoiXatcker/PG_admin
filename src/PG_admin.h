@@ -14,7 +14,7 @@ class PG_admin {
     
 public:
     int get_libpq_ver(); // Получить версию библиотеки libpq
-    void Connect_db(string ip_adr, string db_name, string username, string passworld); // Функция для подключения к базе данных
+    bool Connect_db(string ip_adr, string db_name, string username, string passworld); // Функция для подключения к базе данных
     void executeQuery(const std::string &query); // Функция для выполнения SQL-запроса
 
 private:

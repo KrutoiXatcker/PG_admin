@@ -19,7 +19,7 @@ int main(){
     std::cout << "Введите имя базы данных: ";
     std::getline(std::cin, db_name);
 
-    admin.Connect_db(ip,db_name,user_name,password);
+    if(!admin.Connect_db(ip,db_name,user_name,password))return -1;
 
 
     while (true) {
